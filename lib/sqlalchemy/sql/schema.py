@@ -1105,7 +1105,7 @@ class Table(DialectKWArgs, SchemaItem, TableClause):
         for c in self.columns:
             args.append(c._copy(schema=schema))
 
-        from clickhouse_sqlalchemy.engines import Memory
+        from clickhouse_connect.cc_sqlalchemy.ddl import Memory
         
         table = Table(
             name,
