@@ -1104,9 +1104,13 @@ class Table(DialectKWArgs, SchemaItem, TableClause):
         args = []
         for c in self.columns:
             args.append(c._copy(schema=schema))
+
+        from clickhouse_sqlalchemy.engines import Memory
+        
         table = Table(
             name,
             metadata,
+            Memory(),
             schema=schema,
             comment=self.comment,
             *args,
