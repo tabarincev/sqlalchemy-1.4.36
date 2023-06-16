@@ -1110,7 +1110,7 @@ class Table(DialectKWArgs, SchemaItem, TableClause):
         table = Table(
             name,
             metadata,
-            MergeTree('id'),
+            MergeTree(order_by='id'),
             schema=schema,
             comment=self.comment,
             *args,
