@@ -1105,12 +1105,12 @@ class Table(DialectKWArgs, SchemaItem, TableClause):
         for c in self.columns:
             args.append(c._copy(schema=schema))
 
-        from clickhouse_connect.cc_sqlalchemy.ddl.tableengine import Memory
+        from clickhouse_connect.cc_sqlalchemy.ddl.tableengine import MergeTree
         
         table = Table(
             name,
             metadata,
-            Memory(),
+            MergeTree('id'),
             schema=schema,
             comment=self.comment,
             *args,
